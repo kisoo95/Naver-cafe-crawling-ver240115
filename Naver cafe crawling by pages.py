@@ -166,7 +166,7 @@ while page < num_page:
             
             # Commenter ID
             comment_id = another_soup_find_all_div_class_comment_area.find_all('a', {'class':'comment_thumb'})[0]['href'].split('/')[-1]
-            commenter_id_1_list.append(commenter_id)
+            commenter_id_1_list.append(comment_id)
                 
         if len(comtemp_list) == 0:
             commenter_1_list.append("NO COMMENT")
