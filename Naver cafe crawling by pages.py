@@ -41,6 +41,7 @@ time.sleep(1)
 # wanted naver cafe url
 baseurl='https://cafe.naver.com/(name of naver cafe)/'
 clubid = '(write club id number)' # what is your naver cafe's clubid? / 네이버 카페 클럽 아이디 입력
+#menuid = '(write menu id number)' # what is your naver cafe's menuid? / 네이버 카페 클럽 게시판 입력(필요시)
 
 # login time you should login within 2 sec
 time.sleep(1)
@@ -54,7 +55,10 @@ page = 0
 index = 0
 
 while page < num_page:
-    driver.get("https://cafe.naver.com/ArticleList.nhn?search.clubid="+str(clubid)+"&search.boardtype=L&search.totalCount=151&search.cafeId="+str(clubid)+"&search.page="+ str(page + 1))
+    driver.get("https://cafe.naver.com/ArticleList.nhn?search.clubid="
+               +str(clubid)
+               #+"&search.menuid="+str(menuid)
+               +"&search.boardtype=L&search.totalCount=151&search.cafeId="+str(clubid)+"&search.page="+ str(page + 1))
     driver.switch_to.frame("cafe_main")
     
     time.sleep(1)  # 페이지 로딩 시간
@@ -183,6 +187,7 @@ while page < num_page:
             
             driver.get("https://cafe.naver.com/ArticleList.nhn?search.clubid="
                +str(clubid)
+               #+"&search.menuid="+str(menuid)
                +"&search.boardtype=L&search.totalCount=151&search.cafeId="
                +str(clubid)
                +"&search.page="
@@ -224,6 +229,7 @@ while page < num_page:
         # Go to main page to track reply page
         driver.get("https://cafe.naver.com/ArticleList.nhn?search.clubid="
                    +str(clubid)
+                   #+"&search.menuid="+str(menuid)
                    +"&search.boardtype=L&search.totalCount=151&search.cafeId="
                    +str(clubid)
                    +"&search.page="
@@ -272,7 +278,10 @@ while page < num_page:
         df.to_csv(r"test.csv",encoding="utf-8-sig",index=False,)
         
         # Go to main page
-        driver.get("https://cafe.naver.com/ArticleList.nhn?search.clubid="+str(clubid)+"&search.boardtype=L&search.totalCount=151&search.cafeId="+str(clubid)+"&search.page="+ str(page + 1))
+        driver.get("https://cafe.naver.com/ArticleList.nhn?search.clubid="
+                   +str(clubid)
+                   #+"&search.menuid="+str(menuid)
+                   +"&search.boardtype=L&search.totalCount=151&search.cafeId="+str(clubid)+"&search.page="+ str(page + 1))
         driver.implicitly_wait(1)
         driver.switch_to.frame("cafe_main")
         time.sleep(1)
