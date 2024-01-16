@@ -160,6 +160,14 @@ while page < num_page:
         commenter_id_1_list = []
         for idx in range(len(comtemp_list)):
             another_soup_find_all_div_class_comment_area = another_soup.find_all('div', {'class':'comment_area'})[idx]
+
+            if another_soup_find_all_div_class_comment_area.text.strip() == '삭제된 댓글입니다.':
+                commenter_1_list.append('Deleted')
+                comment_1_list.append('Deleted')
+                comment_time_1_list.append('Deleted')
+                commenter_id_1_list.append('Deleted')
+                continue
+                    
             commenter = another_soup_find_all_div_class_comment_area.find_all('a', {'aria-expanded':'false'})[0].text.strip()
             comment = another_soup_find_all_div_class_comment_area.find_all('span', {'class':'text_comment'})[0].text
             comment_time = another_soup_find_all_div_class_comment_area.find_all('span', {'class':'comment_info_date'})[0].text   
