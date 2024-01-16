@@ -165,10 +165,7 @@ while page < num_page:
             comment_time_1_list.append(comment_time)
             
             # Commenter ID
-            commenter_info = driver.find_element(By.CLASS_NAME, "comment_thumb").get_attribute("href")
-            comment_id = ""
-            if "members/" in commenter_info:
-                commenter_id = commenter_info[commenter_info.index("members/") + 8 :]
+            comment_id = another_soup_find_all_div_class_comment_area.find_all('a', {'class':'comment_thumb'})[0]['href'].split('/')[-1]
             commenter_id_1_list.append(commenter_id)
                 
         if len(comtemp_list) == 0:
